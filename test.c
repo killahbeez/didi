@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include "function.h"
+extern int x;
+int i3 = 5;
 
 int main(){
 	int a = didilea();
@@ -16,5 +18,7 @@ int main(){
 	*(p+1) = 'U';
 	printf("%s\n",p);
 	free(p);
+	printf("%d\n",x);
+	printf("%d\n",i3);
 	return 0;
 }
