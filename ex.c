@@ -11,7 +11,7 @@ int main(){
 	*(ptr+1) = 6;
 
 	for(int i=0;i<2;i++){
-		printf("%p\t%d\n",&(ptr[i]),ptr[i]);
+		printf("%p\t%p\t%d\n",ptr,&(*(ptr+i)),ptr[i]);
 	}
 
 	free(ptr);
