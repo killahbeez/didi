@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string.h>
 
+char* didi();
 
 int main(){
-	uint8_t a1 = 23;
-	uint8_t a2 = 32;
-	printf("%d\n",&a1);
-	printf("%d\n",&a2);
-	uint8_t *ptr_1 = &a2;
-	printf("   %d\n",ptr_1);
-	printf("%d\n",*ptr_1++);
-	printf("   %d\n",ptr_1);
-	printf("%d\n",*ptr_1);
+	char* didilea = NULL;
+	didilea = (char *) didi();
+	*(didilea + 1) = 'U';
+	printf("%p\t%p\t %s\n",didilea,&didilea,didilea);
+	free(didilea);
 	return 0;
+}
+
+char* didi(){
+	char *a = strdup("muie la dezinte");
+	return a;
 }
