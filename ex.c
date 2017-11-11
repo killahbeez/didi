@@ -3,9 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-char* didi();
-
 int main(){
+	//on STACK memory locations are allocated downwards so (q-w)
 	char q[] = "didi do dexter";
 	char w[] = "cacat pansat ";
 
@@ -17,15 +16,15 @@ int main(){
 	}
 	printf("%s\n",w);
 
-	char* didilea = NULL;
-	didilea = (char *) didi();
-	*(didilea + 1) = 'U';
-	printf("%p\t%p\t %s\n",didilea,&didilea,didilea);
-	free(didilea);
-	return 0;
-}
+	//on HEAP memory locations are allocated upwards so (b-a)
+	char *a = strdup("muie la dezinte ");
+	char *b = strdup("marmota are mere");
 
-char* didi(){
-	char *a = strdup("muie la dezinte");
-	return a;
+	uint16_t string_len_1 = strlen(a);
+	uint32_t padding_bytes_1 = (b-a-string_len_1);
+	// change NUL character and all the padding bytes (end of string) with a non printable one
+	for(int i=0;i<padding_bytes_1;i++){
+		*(a+string_len_1+i) = 1;		
+	}
+	printf("%s\n",a);
 }
