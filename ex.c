@@ -17,8 +17,8 @@ int main(){
 	printf("%s\n",w);
 
 	//on HEAP memory locations are allocated upwards so (b-a)
-	char *a = strdup("gargamel ura ");
-	char *b = strdup("pe strumfi");
+	char *a = (char *)strdup("gargamel ura ");
+	char *b = (char *)strdup("pe strumfi");
 
 	uint16_t string_len_1 = strlen(a);
 	uint32_t padding_bytes_1 = (b-a-string_len_1);
