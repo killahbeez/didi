@@ -13,7 +13,7 @@ static union test {
 
 int main(int argc, char *argv[]){
 	int2byte.whole = 0x11223344;
-	printf("sizeof enum: %d bytes\n",sizeof(int2byte));
+	printf("sizeof union: %d bytes\n",sizeof(int2byte));
 	printf("int2byte address: %p\n",&int2byte);
 	printf("c0 address: %p\n",&(int2byte.bytes.c0));
 	printf("c1 address: %p\n",&(int2byte.bytes.c1));
