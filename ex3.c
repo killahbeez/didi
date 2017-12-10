@@ -9,6 +9,11 @@ void change_string(char *str_dest, char *str_src, uint8_t size);
 char *change_string_literal(char *str);
 
 int main(){
+	char didi[] = "mui";
+	char dexter[] = "did";
+	printf("%s\n",dexter);
+	dexter[3]=32;//change NUL to SPACE
+	printf("%s\n",dexter);
 	/*char didi[] = "didilea";
 	printf("Before: %s\n",didi);	
 	change_string(didi,"marmota",strlen(didi));
@@ -21,8 +26,9 @@ int main(){
 
 	uint32_t a[8] = {16,26,36,46,56,66,76,86};
 	uint32_t i = 1;
-	struct timespec tm = {0,500000000L};
-	for(i=0;i<9;i++){
+	a[8] = 123;
+	struct timespec tm = {0,100000000L};
+	for(i=0;i<11;i++){
 		a[i] = 2;
 		printf("%d\t%d\n",i,a[i]);
 		nanosleep(&tm,NULL);
