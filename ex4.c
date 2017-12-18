@@ -29,6 +29,7 @@ int main(){
 	printf("Enter string: ");
 	scanf("%[^\n]",sc);
 	printf("You entered: %s\n",sc);
+	//testing string literal address, only once is stored if string is the same
 	struct dog oscar_1 = {"oscar","labrador",30,45};
 	struct dog oscar_2 = {"oscar","labrador",40,67};
 	printDog(&oscar_1);
