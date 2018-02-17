@@ -20,7 +20,10 @@ int main(){
 		printf("%d\t%d\n",i,*(a+i));
 	}
 	*b=0x11223344;
-	printf("b: %u\n",*b);
+	printf("b: %x\n",*b);
+	uint32_t *c = (uint32_t *)(a+heap_bytes_alloc+4);
+	*c=0x55667788; 
+	printf("b: %x\n",*b);
 	free(b);
 	free(a);
 	return 0;
