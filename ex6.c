@@ -12,7 +12,8 @@ int main(){
 
 	printf("%d\t%d\t%d\n",**a,*(*a+1),*(*a+2));
 	printf("%d\t%d\n",*a,*(a+1));
-	printf("%d\t%d\n",&**(a+1),**(a+1));
+	printf("%d\t%d\n",&**(a+1),&*(*(a+1)+1));
+	printf("%d\n",*(*a+5));
 					
 	return 0;
 }

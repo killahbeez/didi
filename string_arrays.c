@@ -27,7 +27,7 @@ int main(){
 	printf("Array dimension: %d\n",dim_arr);
 	for(int i=0;i<dim_arr;i++){
 		//str_arr[i] = "didi"; //can't reassign to point to another string literal
-		str_arr[i][0] = 'G'; 
+		*(*(str_arr+i)+1) = 'G'; 
 		printf("%s\n",str_arr[i]);
 	}
 	return 0;
