@@ -1,13 +1,13 @@
 CFLAGS=-Wall -g -std=gnu99 -lm 
 
 test: test.o function.o
-	gcc -Wall test.o function.o -o test
+	gcc -Wall $^ -o $@
 
 test.o: test.c function.h
-	gcc -Wall -g -c test.c -o test.o
+	gcc -Wall -g -c test.c -o $@
 
 function.o: function.c
-	gcc -Wall -g -c function.c -o function.o
+	gcc -Wall -g -c $^ -o $@
 
 mysql: mysql_test.c 
 	gcc -Wall -g `mysql_config --cflags --libs` mysql_test.c -o mysql_test

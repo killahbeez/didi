@@ -5,28 +5,16 @@
 #include <unistd.h>
 
 int main(){
-	const char *str[] = {"didi","dodoleamarmota","dexter","muie"};
-	for(int i=0;i<sizeof(str)/sizeof(*str);i++){
-		printf("\t%d\n",*(str+i));
-		char *pt = *(str+i);
-		while(*pt)
-			printf("%c\n",*pt++);
+	char g[3][4][5] = {11,21,31,41,51,61,71,81};
+	printf("%p\t%p\t%p\t%p\t%p\n",&g,g,*g,**g,&***g);
+	char a[3][5] = {11,21,31,41,51,61,62,63};
+	char (*p)[5] = a;
+	char *ptr = *a;
+	for(int i=0;i<sizeof(*a);i++){
+		printf("[%d]\t%d\n",i,*(ptr+i));
 	}
-	
-	char b[]={4,51,61,13};
-	printf("%d\t%d\n",*b+1,*((&b+1)-1));
-	char a[10][3] = {
-						{11,21,3},
-						{4,5,6}
-					};
-
-	printf("%d\n",*(*a+1));
-	printf("%d\n",**a);
-	printf("%d\t%d\t%d\n",**a,*(*a+1),*(*a+2));
-	printf("%d\t%d\n",*a,*(a+1));
-	printf("%d\t%d\n",&**(a+1),&*(*(a+1)+1));
-	printf("%d\n",*(*a+5));
-					
-	printf("%d\t%d\t%d\n",a,a+1,&a+1);
+	printf("-------------\n");
+	printf("%d\t%d\n",*(*(a+1)+2),**(p+1));
+	printf("%d\t%d\t%d\n",sizeof(a),sizeof(*a),sizeof(a)/sizeof(*a));
 	return 0;
 }
