@@ -3,8 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdint.h>
 
-struct big { char *c; };
+struct big { 
+				char *c;
+				uint32_t cnt;
+};
 struct big *array;
 
 int compare (void const *a1, void const *b1)
@@ -32,7 +36,7 @@ int main (int argc, char **argv)
 		"confusing"
 	};
 	size_t array_members = sizeof(didi)/sizeof(*didi);
-	array = (struct big *) malloc (array_members * sizeof (*array));
+	array = (struct big *) malloc (array_members * sizeof (struct big));
 	printf("Number of strings: %d\n",array_members);
 	if (array == NULL)
 	{
@@ -42,12 +46,13 @@ int main (int argc, char **argv)
 	printf("Initial strings:\n");
 	for (size_t i = 0; i < array_members; i++){
 		array[i].c = strdup(didi[i]);
+		array[i].cnt = i;
 		if (array[i].c == NULL)
 		{
 			printf("Can't allocate memory for string: %d\t%s",i,didi[i]);
 			exit(0);
 		}
-		printf("\t%d:\t%s\n",i,array[i].c);
+		printf("\t%d:\t%s\n",array[i].cnt,array[i].c);
 	}
 
 	printf("________________\n");
@@ -55,7 +60,7 @@ int main (int argc, char **argv)
 	qsort (array, array_members, sizeof *array, compare);
 
 	for(size_t i = 0;i<array_members;i++){
-		printf("\t%d:\t%s\n",i,array[i].c);
+		printf("\t%d:\t%s\n",array[i].cnt,array[i].c);
 		free(array[i].c);
 	}
 	free(array);
