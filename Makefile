@@ -1,21 +1,30 @@
-CFLAGS = -Wall -g -std=gnu99 -lm 
-OBJECTS = ex ex1 ex2 ex3 ex4 ex6 didilea file heap_size_overflow int2byte mysql_test reverse_string string_arrays test sort_strings didi.txt
+CFLAGS = -Wall -g -std=gnu99 -lm
+
+SOURCES := $(shell ls *.c)
+OBJECTS := $(subst .c,.o,$(SOURCES))
+EXECS := $(shell find . -maxdepth 1 -type f -executable)
 
 test: test.o function.o
-	gcc -Wall $^ -o $@
+	gcc $(CFLAGS) $^ -o $@
 
 test.o: test.c function.h
-	gcc -Wall -g -c test.c -o $@
+	gcc $(CFLAGS) -c test.c -o $@
 
 function.o: function.c
-	gcc -Wall -g -c $^ -o $@
+	gcc $(CFLAGS) -c $^ -o $@
 
-mysql: mysql_test.c 
-	gcc -Wall -g `mysql_config --cflags --libs` mysql_test.c -o mysql_test
+%: %.c
+	gcc $(CFLAGS) $^ -o $@
+
+.PHONY: clean didi
+
+mysql_test: mysql_test.c 
+	gcc $(CFLAGS) `mysql_config --cflags --libs` mysql_test.c -o mysql_test
 
 clean:
-	rm -f ./*.o ./*.s ./test
-	rm -f ${OBJECTS}
+	rm -f ./test ./didi.txt
+	rm -f $(EXECS) $(OBJECTS)
 
 didi: test.txt
 	cat $^ | head -n2 > $@.txt
+
