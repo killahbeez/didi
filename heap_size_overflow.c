@@ -10,7 +10,7 @@ int main(){
 	
 	uint8_t size_info_header = 4; // number of bytes for header heap chunk
 	uint32_t *heap_size = (uint32_t *)(a-size_info_header);
-	uint32_t heap_bytes_alloc =	( *heap_size >> 3 << 3 ) - size_info_header; // the last three bytes are for other purpose so set to 000
+	uint32_t heap_bytes_alloc =	( *heap_size >> 3 << 3 ) - size_info_header; // the last three bits are for other purpose so set to 000
 	printf("HEAP Memory size allocated: %d bytes\n",heap_bytes_alloc);
 
 	for(uint32_t i=0;i<heap_bytes_alloc;i++){
