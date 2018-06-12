@@ -26,23 +26,32 @@ int32_t operation(calc callback,int32_t a,int32_t b){
 	return callback(a,b);
 }
 
-calc ops[] = {
-					add,
-					diff,
-					multiply,
-					subtract
-};
+typedef struct {
+	char *description;
+	calc op;
+} operands;
 
-char *descr[] = {
-	"Add %d + %d =\t%d\n",
-	"Diff %d - %d =\t%d\n",
-	"Multiply %d * %d =\t%d\n",
-	"Subtract %d / %d =\t%d\n"
-};
-
+operands ops[] = {
+					{
+						"Add %d + %d = %d\n",
+						add
+					},
+					{
+						"Diff %d - %d = %d\n",
+						diff
+					},
+					{
+						"Multiply %d * %d = %d\n",
+						multiply
+					},
+					{
+						"Subtract %d / %d = %d\n",
+						subtract
+					}
+				};
 int main(){
 	for(uint8_t i=0;i<sizeof(ops)/sizeof(*ops);i++){
-		printf(descr[i],40,20,operation(ops[i],40,20));
+		printf(ops[i].description,40,20,operation(ops[i].op,40,20));
 	}
 	return 0;
 }
