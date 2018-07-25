@@ -19,5 +19,6 @@ int main(){
 	printf("-------------\n");
 	printf("%d\t%d\n",*(*(a+1)+2),**(p+1));
 	printf("%d\t%d\t%d\n",sizeof(a),sizeof(*a),sizeof(a)/sizeof(*a));
+	//test
 	return 0;
 }
