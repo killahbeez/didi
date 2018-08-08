@@ -3,22 +3,34 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <assert.h>
+
+uint8_t *digits(uint64_t nr, uint8_t *count){
+	uint8_t *dig = malloc(1*sizeof(uint8_t));
+	assert(dig != NULL);
+	uint8_t cur = 0;
+	while(nr / 10 > 0){
+		(*count)++;
+		cur = nr%10;
+		nr /= 10;
+		*(dig+*count-1) = cur;
+		dig = realloc(dig,(*count+1) * sizeof(uint8_t));
+		assert(dig != NULL);
+	}
+	*(dig+*count) = nr;
+
+	return dig;
+}
 
 int main(){
-	double h = 1;
-	double *ptr_h = &h;
-	printf("%d\t%d\n",sizeof(ptr_h),sizeof(*ptr_h));
-	char g[3][4][5] = {11,21,31,41,51,61,71,81};
-	printf("%p\t%p\t%p\t%p\t%p\n",&g,g,*g,**g,&***g);
-	char a[3][5] = {11,21,31,41,51,61,62,63};
-	char (*p)[5] = a;
-	char *ptr = *a;
-	for(int i=0;i<sizeof(*a);i++){
-		printf("[%d]\t%d\n",i,*(ptr+i));
+	uint64_t nr = 1234434324256789;
+	uint8_t cnt_digits = 0;
+	uint8_t *result = digits(nr,&cnt_digits);
+	printf("Number: %llu\n",(long long)nr);
+	printf("Total digits: %d\n",cnt_digits+1);
+	for(int i=0;i<=cnt_digits;i++){
+		printf("%d\t%d\n",i+1,*(result+i));
 	}
-	printf("-------------\n");
-	printf("%d\t%d\n",*(*(a+1)+2),**(p+1));
-	printf("%d\t%d\t%d\n",sizeof(a),sizeof(*a),sizeof(a)/sizeof(*a));
-	//test
+	free(result);
 	return 0;
 }
