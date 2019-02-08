@@ -54,7 +54,7 @@ void free_explode(str_delim_t *str_delim){
 }
 
 int main(int argc, char **argv){
-	char str[] = "didi#gogo##gigi##mimi#leagsa ##sakjsa##ewewew##sdasa";
+	char str[] = "didi#gogo#gigi#mimi#leagsa##sakjsa#ewewew#sdasa";
 	char *delim = "#";
 
 	str_delim_t *str_delim = explode(str,delim);
