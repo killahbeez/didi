@@ -16,7 +16,7 @@ typedef struct {
 int main(){
 	didi_ didi = {10,1};
 	printf("%d %d\n",didi.a, didi.b);
-	printf("%d\n",sizeof(didi));
+	printf("%d %d\n",sizeof(didi), sizeof(didi1_));
 
 	if(didi.a && didi.b) printf("ok\n");
 	if(!(!didi.a || !didi.b)) printf("ok\n");
