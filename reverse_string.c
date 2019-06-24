@@ -35,11 +35,10 @@ char *reverse_str_XOR(char *str){
 	char *buffer = (char *) malloc(size+1);
 	memcpy(buffer,str,size+1);
 	int i=0;
-	while(i+1<size){
-		*(buffer + i) ^= *(buffer+size-1);
-		*(buffer + size -1) ^= *(buffer+i);
-		*(buffer + i) ^= *(buffer+size-1);
-		size--;
+	while(i<size/2){
+		*(buffer+i) ^= *(buffer+size-1-i);
+		*(buffer+size-1-i) ^= *(buffer+i);
+		*(buffer+i) ^= *(buffer+size-1-i);
 		i++;
 	}
 	return buffer;
