@@ -4,8 +4,7 @@
 
 int *didi(){
 	static int b =67;
-	int *a=&b;
-	return a;
+	return &b;
 }
 
 int main() {
